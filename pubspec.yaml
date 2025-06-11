@@ -13,7 +13,7 @@ dependencies:
 
   cupertino_icons: ^1.0.6
   audioplayers: ^6.4.0
-
+  image_picker: ^0.8.7+5  # galeriden resim seçmek için
 
 dev_dependencies:
   flutter_test:
@@ -25,4 +25,3 @@ flutter:
 
   assets:
     - assets/music.mp3
-
