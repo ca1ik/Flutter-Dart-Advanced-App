@@ -24,4 +24,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/music.mp3  # bu dosyanın assets klasöründe olduğundan emin ol
+      - assets/background.mp3
+
+  # bu dosyanın assets klasöründe olduğundan emin ol

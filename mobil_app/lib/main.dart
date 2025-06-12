@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'dart:io';
+import 'dart:typed_data';
 import 'dart:ui' as ui;
-
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -11,408 +11,362 @@ void main() {
 }
 
 /// Ana Uygulama Widget'ı
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final AudioPlayer _audioPlayer = AudioPlayer();
+  bool _isDarkMode = false;
+  double _volume = 1.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _initMusic();
+  }
+
+  Future<void> _initMusic() async {
+    _audioPlayer.setReleaseMode(ReleaseMode.loop);
+    await _audioPlayer.play(AssetSource('background.mp3'), volume: _volume);
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Birleşik Mobil Uygulama',
-      theme: ThemeData.light(useMaterial3: true),
-      darkTheme: ThemeData.dark(useMaterial3: true),
-      themeMode: ThemeMode.system,
-      home: const HomeScreen(),
-    );
-  }
-}
-
-/// Ana Sayfa: Alt sekmelerle Settings - Modules - Help sayfalarını yönetir
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  int _currentIndex = 0;
-
-  // Pages: Her biri ayrı widget olarak tanımlanacak
-  static const List<Widget> _pages = [
-    SettingsPage(),
-    ModulesPage(),
-    HelpPage(),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(child: _pages[_currentIndex]),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        selectedItemColor: Theme.of(context).colorScheme.primary,
-        unselectedItemColor: Colors.grey,
-        onTap: (index) => setState(() => _currentIndex = index),
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Ayarlar'),
-          BottomNavigationBarItem(icon: Icon(Icons.image), label: 'Modüller'),
-          BottomNavigationBarItem(icon: Icon(Icons.help), label: 'Yardım'),
-        ],
+      debugShowCheckedModeBanner: false,
+      theme: _isDarkMode ? ThemeData.dark() : ThemeData.light(),
+      home: MainPage(
+        audioPlayer: _audioPlayer,
+        isDarkMode: _isDarkMode,
+        volume: _volume,
+        onThemeChanged: (dark) => setState(() => _isDarkMode = dark),
+        onVolumeChanged: (vol) {
+          setState(() => _volume = vol);
+          _audioPlayer.setVolume(vol);
+        },
       ),
     );
   }
 }
 
-/// ---------------------------
-/// Ayarlar Sayfası
-/// ---------------------------
-class SettingsPage extends StatefulWidget {
-  const SettingsPage({super.key});
+enum _Mode { menu, mask, settings }
+
+class MainPage extends StatefulWidget {
+  final AudioPlayer audioPlayer;
+  final bool isDarkMode;
+  final double volume;
+  final ValueChanged<bool> onThemeChanged;
+  final ValueChanged<double> onVolumeChanged;
+
+  const MainPage({
+    required this.audioPlayer,
+    required this.isDarkMode,
+    required this.volume,
+    required this.onThemeChanged,
+    required this.onVolumeChanged,
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<SettingsPage> createState() => _SettingsPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
-  bool _isFullscreen = false;
-  bool _isSoundOn = false;
-  double _volume = 50;
-  late AudioPlayer _audioPlayer;
+class _MainPageState extends State<MainPage> {
+  _Mode _mode = _Mode.menu;
+  ui.Image? _originalImage;
+  Uint8List? _displayBytes;
+  Uint8List? _maskedBytes;
+  final ImagePicker _picker = ImagePicker();
+  List<Offset> _maskPoints = [];
+  double _brushSize = 20.0;
 
-  @override
-  void initState() {
-    super.initState();
-    _audioPlayer = AudioPlayer();
-    _audioPlayer.setReleaseMode(ReleaseMode.loop);
-  }
+  Future<void> _pickAndResizeImage() async {
+    final xfile = await _picker.pickImage(source: ImageSource.gallery);
+    if (xfile == null) return;
 
-  @override
-  void dispose() {
-    _audioPlayer.dispose();
-    super.dispose();
-  }
+    final bytes = await xfile.readAsBytes();
+    final codec = await ui.instantiateImageCodec(
+      bytes,
+      targetWidth: 256,
+      targetHeight: 256,
+    );
+    final frame = await codec.getNextFrame();
 
-  void _toggleFullscreen() {
     setState(() {
-      _isFullscreen = !_isFullscreen;
-      // fullscreen toggling logic platform specific, burada simule ediliyor
+      _originalImage = frame.image;
+      _displayBytes = bytes;
+      _maskPoints.clear();
+      _maskedBytes = null;
+      _mode = _Mode.mask;
     });
   }
 
-  void _toggleSound() async {
-    setState(() => _isSoundOn = !_isSoundOn);
-    if (_isSoundOn) {
-      await _audioPlayer.play(AssetSource('music.mp3'));
-      await _audioPlayer.setVolume(_volume / 100);
-    } else {
-      await _audioPlayer.pause();
-    }
+  void _addMaskPoint(Offset pos) {
+    setState(() {
+      _maskPoints.add(pos);
+    });
   }
 
-  void _setVolume(double val) async {
+  Future<void> _finishMask() async {
+    if (_originalImage == null) return;
+    final recorder = ui.PictureRecorder();
+    final canvas = Canvas(recorder, Rect.fromLTWH(0, 0, 256, 256));
+    ImageMaskPainter(
+      image: _originalImage!,
+      points: _maskPoints,
+      brushSize: _brushSize,
+    ).paint(canvas, const Size(256, 256));
+
+    final picture = recorder.endRecording();
+    final img = await picture.toImage(256, 256);
+    final bd = await img.toByteData(format: ui.ImageByteFormat.png);
+    _maskedBytes = bd!.buffer.asUint8List();
+
     setState(() {
-      _volume = val;
+      _mode = _Mode.menu;
     });
-    if (_isSoundOn) {
-      await _audioPlayer.setVolume(_volume / 100);
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
-      appBar: AppBar(title: const Text('Ayarlar')),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: SizedBox(
-          height: screenHeight * 0.8,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                'Tam Ekran Modu: ${_isFullscreen ? "Açık" : "Kapalı"}',
-                style: theme.textTheme.titleLarge,
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: _toggleFullscreen,
-                child: Text(_isFullscreen ? 'Tam Ekran Kapat' : 'Tam Ekran Aç'),
-              ),
-              const SizedBox(height: 32),
-              Text('Ses Durumu: ${_isSoundOn ? "Açık" : "Kapalı"}',
-                  style: theme.textTheme.titleLarge),
-              const SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: _toggleSound,
-                child: Text(_isSoundOn ? 'Sesi Kapat' : 'Sesi Aç'),
-              ),
-              const SizedBox(height: 24),
-              Text('Ses Seviyesi: ${_volume.round()}',
-                  style: theme.textTheme.titleLarge),
-              Slider(
-                value: _volume,
-                min: 0,
-                max: 100,
-                divisions: 20,
-                label: _volume.round().toString(),
-                onChanged: _setVolume,
-              ),
-              const Spacer(),
-              Text(
-                'Bu sayfada uygulama ayarları bulunur. Ses ve tam ekran modunu yönetebilirsiniz.',
-                style: theme.textTheme.bodyMedium,
-              ),
-            ],
-          ),
+      appBar: AppBar(
+        title: Text(
+          _mode == _Mode.menu
+              ? 'Ana Menü'
+              : _mode == _Mode.mask
+                  ? 'Maske Oluştur'
+                  : 'Ayarlar',
         ),
       ),
-    );
-  }
-}
-
-/// ---------------------------
-/// Modüller Sayfası
-/// ---------------------------
-class ModulesPage extends StatefulWidget {
-  const ModulesPage({super.key});
-
-  @override
-  State<ModulesPage> createState() => _ModulesPageState();
-}
-
-class _ModulesPageState extends State<ModulesPage> {
-  final ImagePicker _picker = ImagePicker();
-
-  File? _selectedFile;
-  ui.Image? _uiImage;
-  bool _isProcessing = false;
-  String? _error;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final screenHeight = MediaQuery.of(context).size.height;
-
-    return Scaffold(
-      appBar: AppBar(title: const Text('Modüller')),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+      drawer: Drawer(
+        child: ListView(
           children: [
-            ElevatedButton.icon(
-              icon: const Icon(Icons.photo_library),
-              label: const Text('Resim Seç ve Maskele'),
-              onPressed: _isProcessing ? null : _pickAndMaskImage,
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                textStyle: const TextStyle(fontSize: 18),
+            DrawerHeader(
+              child: Text(
+                'Menü',
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
-            const SizedBox(height: 20),
-            if (_isProcessing) const Center(child: CircularProgressIndicator()),
-            if (_error != null) _buildErrorBox(_error!, theme),
-            if (_selectedFile != null)
-              Container(
-                height: screenHeight * 0.4,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.file(_selectedFile!, fit: BoxFit.contain),
-                ),
-              ),
-            if (_selectedFile == null && _error == null)
-              Container(
-                height: screenHeight * 0.25,
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceVariant,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Text(
-                    'Henüz resim seçilmedi.',
-                    style: theme.textTheme.bodyLarge,
-                  ),
-                ),
-              ),
+            ListTile(
+              leading: const Icon(Icons.image),
+              title: const Text('Resim Seç ve Maskele'),
+              onTap: () {
+                Navigator.pop(context);
+                _pickAndResizeImage();
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Ayarlar'),
+              onTap: () {
+                Navigator.pop(context);
+                setState(() {
+                  _mode = _Mode.settings;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+      body: _buildBody(),
+    );
+  }
+
+  Widget _buildBody() {
+    switch (_mode) {
+      case _Mode.menu:
+        return _buildMenu();
+      case _Mode.mask:
+        return _buildMaskPage();
+      case _Mode.settings:
+        return _buildSettingsPage();
+    }
+  }
+
+  Widget _buildMenu() {
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: [
+            const SizedBox(height: 24),
+            ElevatedButton.icon(
+              icon: const Icon(Icons.image),
+              label: const Text('Resim Seç ve Maskele'),
+              onPressed: _pickAndResizeImage,
+            ),
             const SizedBox(height: 16),
-            if (_uiImage != null)
-              CustomPaint(
-                size: Size(double.infinity, screenHeight * 0.3),
-                painter: ImageMaskPainter(_uiImage!),
+            ElevatedButton.icon(
+              icon: const Icon(Icons.settings),
+              label: const Text('Ayarlar'),
+              onPressed: () => setState(() => _mode = _Mode.settings),
+            ),
+            if (_displayBytes != null && _maskedBytes != null) ...[
+              const SizedBox(height: 32),
+              Text('Sonuçlar', style: Theme.of(context).textTheme.titleLarge),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Orijinal Görsel
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blue, width: 2),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                      children: [
+                        Text('Orijinal',
+                            style: Theme.of(context).textTheme.titleSmall),
+                        const SizedBox(height: 8),
+                        Image.memory(_displayBytes!, width: 256, height: 256),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  // Maskeli Görsel
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.green, width: 2),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                      children: [
+                        Text('Maske',
+                            style: Theme.of(context).textTheme.titleSmall),
+                        const SizedBox(height: 8),
+                        Image.memory(_maskedBytes!, width: 256, height: 256),
+                      ],
+                    ),
+                  ),
+                ],
               ),
+              const SizedBox(height: 16),
+              Text('Nokta Sayısı: ${_maskPoints.length}'),
+              Text('Fırça Boyutu: ${_brushSize.toInt()}'),
+            ],
           ],
         ),
       ),
     );
   }
 
-  Widget _buildErrorBox(String message, ThemeData theme) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 12),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.errorContainer,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Text(
-        message,
-        style: theme.textTheme.bodyMedium
-            ?.copyWith(color: theme.colorScheme.onErrorContainer),
-      ),
-    );
-  }
-
-  Future<void> _pickAndMaskImage() async {
-    try {
-      setState(() {
-        _isProcessing = true;
-        _error = null;
-        _uiImage = null;
-      });
-
-      final XFile? picked =
-          await _picker.pickImage(source: ImageSource.gallery);
-      if (picked == null) {
-        setState(() {
-          _isProcessing = false;
-          _error = "Resim seçilmedi.";
-        });
-        return;
-      }
-
-      final File file = File(picked.path);
-      final data = await file.readAsBytes();
-      final codec = await ui.instantiateImageCodec(data);
-      final frame = await codec.getNextFrame();
-
-      setState(() {
-        _selectedFile = file;
-        _uiImage = frame.image;
-        _isProcessing = false;
-      });
-    } catch (e) {
-      setState(() {
-        _isProcessing = false;
-        _error = "Resim yüklenirken hata oluştu: $e";
-      });
+  Widget _buildMaskPage() {
+    if (_originalImage == null) {
+      return const Center(child: Text('Lütfen önce bir resim seçin.'));
     }
-  }
-}
-
-/// Custom Painter: Basit maskeleme efekti çizimi
-class ImageMaskPainter extends CustomPainter {
-  final ui.Image image;
-
-  ImageMaskPainter(this.image);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint();
-
-    // Resmi tam ekrana sığdırmak için ölçek hesapla
-    final scale = size.width / image.width;
-    final scaledHeight = image.height * scale;
-
-    // Resmi ölçekli olarak çiz
-    final dst = Rect.fromLTWH(
-        0, (size.height - scaledHeight) / 2, size.width, scaledHeight);
-    canvas.drawImageRect(
-        image,
-        Rect.fromLTWH(0, 0, image.width.toDouble(), image.height.toDouble()),
-        dst,
-        paint);
-
-    // Maske olarak yarım saydam siyah bir katman çiz
-    final maskPaint = Paint()..color = Colors.black.withOpacity(0.5);
-    canvas.drawRect(dst, maskPaint);
-
-    // Maske alanını daha karmaşık yapabiliriz, şimdilik basit siyah yarı saydam
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}
-
-/// ---------------------------
-/// Yardım Sayfası
-/// ---------------------------
-class HelpPage extends StatelessWidget {
-  const HelpPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final fgColor = Theme.of(context).colorScheme.onBackground;
-    final screenHeight = MediaQuery.of(context).size.height;
-
-    return Scaffold(
-      appBar: AppBar(title: const Text('Yardım')),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: SizedBox(
-          height: screenHeight * 0.85,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
+      children: [
+        Expanded(
+          child: Center(
+            child: GestureDetector(
+              onPanDown: (e) => _addMaskPoint(e.localPosition),
+              onPanUpdate: (e) => _addMaskPoint(e.localPosition),
+              child: CustomPaint(
+                painter: ImageMaskPainter(
+                  image: _originalImage!,
+                  points: _maskPoints,
+                  brushSize: _brushSize,
+                ),
+                child: const SizedBox(width: 256, height: 256),
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Row(
             children: [
-              Text(
-                'Uygulama Kullanımı',
-                style: Theme.of(context).textTheme.headlineSmall,
+              const Text('Fırça Boyutu'),
+              Expanded(
+                child: Slider(
+                  min: 5,
+                  max: 100,
+                  value: _brushSize,
+                  onChanged: (v) => setState(() => _brushSize = v),
+                ),
               ),
-              const SizedBox(height: 12),
-              const Text(
-                '''
-1. Modüller sayfasından resim seçip üzerine maskeleme yapabilirsiniz.
-2. Ayarlar sayfasında ses ve tam ekran modunu kontrol edebilirsiniz.
-3. Ses seviyesi slider ile ayarlanabilir.
-4. Yardım sayfasında bu kullanım bilgileri görüntülenir.
-5. Modüller sayfasında seçilen resim ekranda gösterilir.
-6. Yardım kısmında uygulama kullanımına dair bilgiler bulunur.
-7. Ses seviyesi kaydırıcıyla kolayca ayarlanır.
-''',
-                style: TextStyle(fontSize: 18, height: 1.4),
-              ),
-              const SizedBox(height: 24),
-              ElevatedButton.icon(
-                icon: const Icon(Icons.contact_support),
-                label: const Text('İletişim'),
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (ctx) => AlertDialog(
-                      title: const Text('İletişim'),
-                      content: const Text(
-                          'E-posta: destek@ornekapp.com\nTelefon: 0123 456 7890'),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.of(ctx).pop(),
-                          child: const Text('Kapat'),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-              const Spacer(),
-              Text(
-                '© 2025 OrnekApp. Tüm hakları saklıdır.',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
+              Text(_brushSize.toInt().toString()),
             ],
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 16),
+          child: ElevatedButton(
+            onPressed: _finishMask,
+            child: const Text('Bitir'),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSettingsPage() {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              const Text('Gece Modu'),
+              const Spacer(),
+              Switch(
+                value: widget.isDarkMode,
+                onChanged: widget.onThemeChanged,
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              const Text('Müzik Sesi'),
+              Expanded(
+                child: Slider(
+                  min: 0,
+                  max: 1,
+                  value: widget.volume,
+                  onChanged: (v) {
+                    widget.onVolumeChanged(v);
+                    widget.audioPlayer.setVolume(v);
+                  },
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
+}
+
+/// Resim ve maske noktalarını çizen painter
+class ImageMaskPainter extends CustomPainter {
+  final ui.Image image;
+  final List<Offset> points;
+  final double brushSize;
+
+  ImageMaskPainter({
+    required this.image,
+    required this.points,
+    required this.brushSize,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.drawImage(image, Offset.zero, Paint());
+    final p = Paint()
+      ..color = Colors.white
+      ..style = PaintingStyle.fill;
+    for (var pt in points) {
+      canvas.drawCircle(pt, brushSize / 2, p);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter old) => true;
 }
