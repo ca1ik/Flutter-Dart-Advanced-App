@@ -196,7 +196,6 @@ class _MainPageState extends State<MainPage> {
             const SizedBox(height: 24),
             ElevatedButton.icon(
               icon: const Icon(Icons.image),
-              label: const Text('Resim Seç ve Maskele'),
               onPressed: _pickAndResizeImage,
             ),
             const SizedBox(height: 16),
