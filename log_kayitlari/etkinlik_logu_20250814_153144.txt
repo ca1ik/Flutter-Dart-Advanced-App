@@ -1,0 +1,18 @@
+--- Log Kaydı: 2025-08-14 15:31:44 ---
+
+[2025-08-14 15:31:39] Kayıt başlatıldı.
+[2025-08-14 15:31:39] Etkin Pencere Değişti: funda.py - Flutter-Dart-Advanced-App - Visual Studio Code [Administrator]
+[2025-08-14 15:31:40] Fare: Tıklama: Button.left tuşu (667, 61) koordinatlarında basıldı.
+[2025-08-14 15:31:41] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:31:41] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:31:41] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:31:41] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:31:41] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:31:41] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:31:41] Etkin Pencere Değişti: Google Gemini - Google Chrome
+[2025-08-14 15:31:41] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:31:41] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:31:41] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:31:42] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:31:42] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:31:43] Fare: Tıklama: Button.left tuşu (644, 16) koordinatlarında basıldı.
