@@ -1,0 +1,24 @@
+--- Log Kaydı: 2025-08-14 15:28:14 ---
+
+[2025-08-14 15:28:02] Kayıt başlatıldı.
+[2025-08-14 15:28:02] Dikkat: Sadece klavye ve fare etkinlikleri kaydedilecektir. Dosya ve klasör erişimi izlenemez.
+[2025-08-14 15:28:02] Tıklama koordinatları ve etkin pencere başlıkları, dosya/klasör erişiminin yerine geçecek şekilde kaydedilmektedir.
+[2025-08-14 15:28:02] Kayıdı durdurmak için 'F5' tuşuna veya 'Kaydı Durdur' düğmesine basabilirsiniz.
+[2025-08-14 15:28:02] Etkin Pencere Değişti: Sistem Geneli Etkinlik Loglayıcısı
+[2025-08-14 15:28:06] Fare: Tıklama: Button.left tuşu (336, 1053) koordinatlarında basıldı.
+[2025-08-14 15:28:08] Fare: Tıklama: Button.left tuşu (1211, 625) koordinatlarında basıldı.
+[2025-08-14 15:28:08] Fare: Tıklama: Button.left tuşu (670, 64) koordinatlarında basıldı.
+[2025-08-14 15:28:08] Etkin Pencere Değişti: Google Gemini - Google Chrome
+[2025-08-14 15:28:09] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:28:09] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:28:09] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:28:09] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:28:09] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:28:09] Klavye: Tuş basıldı: '[Alt_l]'
+[2025-08-14 15:28:09] Klavye: Tuş basıldı: '[Tab]'
+[2025-08-14 15:28:09] Klavye: Tuş basıldı: '[Alt_l]'
+[2025-08-14 15:28:09] Klavye: Tuş basıldı: '[Tab]'
+[2025-08-14 15:28:10] Klavye: Tuş basıldı: '[Tab]'
+[2025-08-14 15:28:10] Etkin Pencere Değişti: Sistem Geneli Etkinlik Loglayıcısı
+[2025-08-14 15:28:14] Fare: Tıklama: Button.left tuşu (621, 291) koordinatlarında basıldı.
+[2025-08-14 15:28:14] Kayıt durduruldu.
