@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dosya Etkinlik Günlüğü</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .log-entry {
+            transition: all 0.3s ease;
+        }
+        .log-entry:hover {
+            transform: translateX(5px);
+            background-color: #e5e7eb;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center p-4" tabindex="0">
+
+    <!-- Ana Konteyner -->
+    <div class="container bg-white shadow-xl rounded-2xl p-8 w-full mt-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Dosya Sistemi Etkinlik Günlüğü</h1>
+
+        <!-- Açıklama Metni -->
+        <p class="text-gray-600 text-center mb-8">
+            Aşağıdaki dosya ve klasör ağacına tıklayarak veya klavyenizle gezerek logları kaydedin.
+        </p>
+
+        <!-- Etkinlik Paneli -->
+        <div class="flex flex-col md:flex-row gap-8">
+
+            <!-- Dosya Sistemi Ağacı -->
+            <div class="flex-1 bg-gray-50 p-6 rounded-xl border border-gray-200">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-4">Klasörler ve Dosyalar</h2>
+                <div id="file-tree" class="text-lg text-gray-700" tabindex="0">
+                    <ul class="list-none p-0 m-0">
+                        <li class="folder cursor-pointer py-1.5"><span class="font-medium text-blue-600">📂 Dokümanlar</span>
+                            <ul class="pl-6 mt-1 hidden">
+                                <li class="file cursor-pointer py-1.5">📄 Rapor.docx</li>
+                                <li class="file cursor-pointer py-1.5">📄 Sunum.pptx</li>
+                            </ul>
+                        </li>
+                        <li class="folder cursor-pointer py-1.5"><span class="font-medium text-blue-600">📂 Fotoğraflar</span>
+                            <ul class="pl-6 mt-1 hidden">
+                                <li class="folder cursor-pointer py-1.5"><span class="font-medium text-blue-600">📂 Tatil</span>
+                                    <ul class="pl-6 mt-1 hidden">
+                                        <li class="file cursor-pointer py-1.5">🖼️ plaj.jpg</li>
+                                        <li class="file cursor-pointer py-1.5">🖼️ dağ.jpg</li>
+                                    </ul>
+                                </li>
+                                <li class="file cursor-pointer py-1.5">🖼️ profil.png</li>
+                            </ul>
+                        </li>
+                        <li class="file cursor-pointer py-1.5">📄 README.md</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Log Kayıt Alanı -->
+            <div class="flex-1 bg-gray-50 p-6 rounded-xl border border-gray-200">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-4">Olay Günlüğü</h2>
+                <ul id="log-list" class="list-none p-0 m-0 text-gray-800">
+                    <li class="text-gray-500 text-sm italic">Henüz bir etkinlik yok.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Log listesini ve dosya ağacını al
+        const logList = document.getElementById('log-list');
+        const fileTree = document.getElementById('file-tree');
+
+        // Etkinlikleri kaydetmek için bir fonksiyon
+        function logEvent(eventType, eventDetail) {
+            // Mevcut boş log mesajını kaldır
+            const emptyMessage = document.querySelector('#log-list li.italic');
+            if (emptyMessage) {
+                logList.removeChild(emptyMessage);
+            }
+
+            // Yeni log girdisi oluştur
+            const newLogItem = document.createElement('li');
+            newLogItem.classList.add('log-entry', 'py-1', 'px-2', 'rounded-md', 'my-1', 'bg-gray-100', 'text-sm');
+            
+            const timestamp = new Date().toLocaleTimeString();
+            newLogItem.innerHTML = `<span class="text-gray-500">[${timestamp}]</span> <strong>${eventType}:</strong> ${eventDetail}`;
+            
+            // Logu listenin başına ekle
+            logList.prepend(newLogItem);
+        }
+
+        // Klavye olaylarını dinle (keydown)
+        document.addEventListener('keydown', (event) => {
+            const key = event.key;
+            logEvent('Klavye', `Tuş basıldı: "${key}"`);
+        });
+
+        // Tıklama olaylarını dinle (click)
+        fileTree.addEventListener('click', (event) => {
+            const target = event.target;
+            
+            // Tıklanan öğenin bir dosya veya klasör olup olmadığını kontrol et
+            if (target.classList.contains('folder') || target.classList.contains('file')) {
+                const itemName = target.innerText.trim();
+                const itemType = target.classList.contains('folder') ? 'Klasör' : 'Dosya';
+                logEvent('Fare Tıklaması', `"${itemName}" (${itemType}) öğesine tıklandı.`);
+            }
+
+            // Klasörün içeriğini göster/gizle
+            if (target.classList.contains('folder')) {
+                const sublist = target.querySelector('ul');
+                if (sublist) {
+                    sublist.classList.toggle('hidden');
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
