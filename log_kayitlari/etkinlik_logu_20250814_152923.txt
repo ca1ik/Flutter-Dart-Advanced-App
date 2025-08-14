@@ -1,0 +1,8 @@
+--- Log Kaydı: 2025-08-14 15:29:23 ---
+
+[2025-08-14 15:29:21] Kayıt başlatıldı.
+[2025-08-14 15:29:21] Dikkat: Sadece klavye ve fare etkinlikleri kaydedilecektir. Dosya ve klasör erişimi izlenemez.
+[2025-08-14 15:29:21] Tıklama koordinatları ve etkin pencere başlıkları, dosya/klasör erişiminin yerine geçecek şekilde kaydedilmektedir.
+[2025-08-14 15:29:21] Kayıdı durdurmak için 'F5' tuşuna veya 'Kaydı Durdur' düğmesine basabilirsiniz.
+[2025-08-14 15:29:21] Etkin Pencere Değişti: funda2.py - Flutter-Dart-Advanced-App - Visual Studio Code [Administrator]
+[2025-08-14 15:29:23] Kayıt durduruldu.
