@@ -1,0 +1,229 @@
+[2025-08-14 15:19:35] Klavye Tuşu basıldı: Key.esc
+[2025-08-14 15:19:36] Fare Tıklaması: Button.left tuşu (1522, 47) koordinatlarında basıldı.
+[2025-08-14 15:19:40] Fare Tıklaması: Button.left tuşu (82, 1066) koordinatlarında basıldı.
+[2025-08-14 15:19:41] Fare Tıklaması: Button.left tuşu (1620, 318) koordinatlarında basıldı.
+[2025-08-14 15:19:41] Fare Tıklaması: Button.left tuşu (1620, 318) koordinatlarında basıldı.
+[2025-08-14 15:19:42] Fare Tıklaması: Button.left tuşu (1241, 356) koordinatlarında basıldı.
+[2025-08-14 15:19:45] Fare Tıklaması: Button.left tuşu (936, 936) koordinatlarında basıldı.
+[2025-08-14 15:19:45] Fare Tıklaması: Button.left tuşu (936, 937) koordinatlarında basıldı.
+[2025-08-14 15:19:55] Fare Tıklaması: Button.left tuşu (1057, 708) koordinatlarında basıldı.
+[2025-08-14 15:19:58] Fare Tıklaması: Button.left tuşu (976, 1079) koordinatlarında basıldı.
+[2025-08-14 15:19:58] Fare Tıklaması: Button.left tuşu (907, 1079) koordinatlarında basıldı.
+[2025-08-14 15:19:59] Fare Tıklaması: Button.left tuşu (1109, 1077) koordinatlarında basıldı.
+[2025-08-14 15:19:59] Fare Tıklaması: Button.left tuşu (1268, 1079) koordinatlarında basıldı.
+[2025-08-14 15:19:59] Fare Tıklaması: Button.left tuşu (756, 1058) koordinatlarında basıldı.
+[2025-08-14 15:20:00] Fare Tıklaması: Button.left tuşu (605, 1058) koordinatlarında basıldı.
+[2025-08-14 15:20:00] Fare Tıklaması: Button.left tuşu (485, 1064) koordinatlarında basıldı.
+[2025-08-14 15:20:00] Fare Tıklaması: Button.left tuşu (1058, 973) koordinatlarında basıldı.
+[2025-08-14 15:20:01] Fare Tıklaması: Button.left tuşu (1054, 975) koordinatlarında basıldı.
+[2025-08-14 15:20:01] Fare Tıklaması: Button.left tuşu (1040, 970) koordinatlarında basıldı.
+[2025-08-14 15:20:02] Fare Tıklaması: Button.left tuşu (899, 994) koordinatlarında basıldı.
+[2025-08-14 15:20:02] Fare Tıklaması: Button.left tuşu (909, 1079) koordinatlarında basıldı.
+[2025-08-14 15:20:02] Fare Tıklaması: Button.left tuşu (958, 977) koordinatlarında basıldı.
+[2025-08-14 15:20:03] Fare Tıklaması: Button.left tuşu (831, 1079) koordinatlarında basıldı.
+[2025-08-14 15:20:04] Fare Tıklaması: Button.left tuşu (89, 1053) koordinatlarında basıldı.
+[2025-08-14 15:20:06] Fare Tıklaması: Button.left tuşu (896, 894) koordinatlarında basıldı.
+[2025-08-14 15:20:06] Fare Tıklaması: Button.left tuşu (922, 933) koordinatlarında basıldı.
+[2025-08-14 15:20:07] Fare Tıklaması: Button.left tuşu (930, 956) koordinatlarında basıldı.
+[2025-08-14 15:20:08] Fare Tıklaması: Button.left tuşu (929, 955) koordinatlarında basıldı.
+[2025-08-14 15:20:12] Fare Tıklaması: Button.left tuşu (1516, 854) koordinatlarında basıldı.
+
+--- Yeni oturum başladı: 2025-08-14 15:21:09 ---
+
+[2025-08-14 15:21:09] Program başlatıldı. Kaydı başlatmak için 'Kaydı Başlat' düğmesine tıklayın.
+[2025-08-14 15:21:11] Kayıt başlatıldı.
+[2025-08-14 15:21:11] Dikkat: Sadece klavye ve fare etkinlikleri kaydedilecektir. Dosya ve klasör erişimi izlenemez.
+[2025-08-14 15:21:12] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:21:12] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:21:12] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:21:13] Fare: Tıklama: Button.left tuşu (1063, 501) koordinatlarında basıldı.
+[2025-08-14 15:21:14] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:21:14] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:21:14] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:21:14] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:21:14] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:21:15] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:21:15] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:21:16] Klavye: Tuş basıldı: Key.ctrl_l
+[2025-08-14 15:21:16] Klavye: Tuş basıldı: '\x1a'
+[2025-08-14 15:21:18] Fare: Tıklama: Button.left tuşu (88, 1060) koordinatlarında basıldı.
+[2025-08-14 15:21:19] Fare: Tıklama: Button.left tuşu (1674, 316) koordinatlarında basıldı.
+[2025-08-14 15:21:19] Fare: Tıklama: Button.left tuşu (1674, 316) koordinatlarında basıldı.
+[2025-08-14 15:21:19] Fare: Tıklama: Button.left tuşu (1195, 319) koordinatlarında basıldı.
+[2025-08-14 15:21:19] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:21:19] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:21:20] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:21:20] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:21:20] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:21:24] Fare: Tıklama: Button.left tuşu (663, 171) koordinatlarında basıldı.
+[2025-08-14 15:21:25] Fare: Tıklama: Button.left tuşu (221, 1079) koordinatlarında basıldı.
+[2025-08-14 15:21:26] Fare: Tıklama: Button.left tuşu (484, 66) koordinatlarında basıldı.
+[2025-08-14 15:21:26] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:21:26] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:21:26] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:21:26] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:21:26] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:21:26] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:21:26] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:21:26] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:21:27] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:21:27] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:21:30] Fare: Tıklama: Button.left tuşu (555, 54) koordinatlarında basıldı.
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:21:30] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:21:31] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:21:31] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:21:31] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:21:33] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:21:33] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:21:33] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:21:33] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:21:35] Fare: Tıklama: Button.left tuşu (732, 63) koordinatlarında basıldı.
+[2025-08-14 15:21:35] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:21:36] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:21:36] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:21:36] Fare: Tıklama: Button.left tuşu (1216, 503) koordinatlarında basıldı.
+[2025-08-14 15:21:36] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:21:37] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:21:37] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:21:38] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:21:39] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:21:39] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:21:39] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:21:41] Fare: Tıklama: Button.left tuşu (1169, 252) koordinatlarında basıldı.
+[2025-08-14 15:21:41] Kayıt durduruldu.
+
+--- Yeni oturum başladı: 2025-08-14 15:22:43 ---
+
+[2025-08-14 15:22:43] Program başlatıldı. Kaydı başlatmak için 'Kaydı Başlat' düğmesine tıklayın.
+[2025-08-14 15:22:45] Kayıt başlatıldı.
+[2025-08-14 15:22:45] Dikkat: Sadece klavye ve fare etkinlikleri kaydedilecektir. Dosya ve klasör erişimi izlenemez.
+[2025-08-14 15:22:45] Tıklama koordinatları, dosya/klasör isimlerinin yerine geçecek şekilde kaydedilmektedir.
+[2025-08-14 15:22:45] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:22:45] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:22:46] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:22:46] Fare: Tıklama: Button.left tuşu (1122, 377) koordinatlarında basıldı.
+[2025-08-14 15:22:47] Fare: Tıklama: Button.left tuşu (773, 51) koordinatlarında basıldı.
+[2025-08-14 15:22:47] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:22:47] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:22:47] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:22:47] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:22:47] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:22:47] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:22:47] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:22:47] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:22:50] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:22:50] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:22:50] Fare: Tıklama: Button.left tuşu (543, 68) koordinatlarında basıldı.
+[2025-08-14 15:22:51] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:22:51] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:22:51] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:22:51] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:22:51] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:22:51] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:22:51] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:22:51] Klavye: Tuş basıldı: 'f'
+[2025-08-14 15:22:51] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:22:51] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:22:51] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:22:52] Klavye: Tuş basıldı: Key.alt_l
+[2025-08-14 15:22:52] Klavye: Tuş basıldı: Key.tab
+[2025-08-14 15:22:55] Fare: Tıklama: Button.left tuşu (1021, 249) koordinatlarında basıldı.
+[2025-08-14 15:22:55] Kayıt durduruldu.
+
+--- Yeni oturum başladı: 2025-08-14 15:24:16 ---
+
+[2025-08-14 15:24:16] Program başlatıldı. Kaydı başlatmak için 'Kaydı Başlat' düğmesine tıklayın.
+[2025-08-14 15:24:17] Kayıt başlatıldı.
+[2025-08-14 15:24:17] Dikkat: Sadece klavye ve fare etkinlikleri kaydedilecektir. Dosya ve klasör erişimi izlenemez.
+[2025-08-14 15:24:17] Tıklama koordinatları, dosya/klasör isimlerinin yerine geçecek şekilde kaydedilmektedir.
+[2025-08-14 15:24:17] Fare: Tıklama: Button.left tuşu (1369, 391) koordinatlarında basıldı.
+[2025-08-14 15:24:18] Klavye: Tuş basıldı: '[Tab]'
+[2025-08-14 15:24:21] Fare: Tıklama: Button.left tuşu (992, 0) koordinatlarında basıldı.
+[2025-08-14 15:24:21] Fare: Tıklama: Button.left tuşu (986, 0) koordinatlarında basıldı.
+[2025-08-14 15:24:22] Fare: Tıklama: Button.left tuşu (544, 0) koordinatlarında basıldı.
+[2025-08-14 15:24:22] Fare: Tıklama: Button.left tuşu (544, 0) koordinatlarında basıldı.
+[2025-08-14 15:24:23] Fare: Tıklama: Button.left tuşu (603, 200) koordinatlarında basıldı.
+[2025-08-14 15:24:24] Fare: Tıklama: Button.left tuşu (1012, 114) koordinatlarında basıldı.
+[2025-08-14 15:24:25] Fare: Tıklama: Button.left tuşu (944, 17) koordinatlarında basıldı.
+[2025-08-14 15:24:25] Fare: Tıklama: Button.left tuşu (939, 31) koordinatlarında basıldı.
+[2025-08-14 15:24:25] Fare: Tıklama: Button.left tuşu (939, 31) koordinatlarında basıldı.
+[2025-08-14 15:24:26] Fare: Tıklama: Button.left tuşu (1360, 60) koordinatlarında basıldı.
+[2025-08-14 15:24:26] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:24:26] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:24:26] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:24:27] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:24:27] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:24:27] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:24:27] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:24:27] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:24:27] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:24:27] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:24:27] Klavye: Tuş basıldı: 'f'
+[2025-08-14 15:24:27] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:24:27] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:24:27] Klavye: Tuş basıldı: 'f'
+[2025-08-14 15:24:28] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:24:33] Fare: Tıklama: Button.left tuşu (623, 111) koordinatlarında basıldı.
+[2025-08-14 15:24:34] Fare: Tıklama: Button.left tuşu (840, 75) koordinatlarında basıldı.
+[2025-08-14 15:24:34] Kayıt durduruldu.
+
+--- Yeni oturum başladı: 2025-08-14 15:25:49 ---
+
+[2025-08-14 15:25:49] Program başlatıldı. Kaydı başlatmak için 'Kaydı Başlat' düğmesine tıklayın.
+[2025-08-14 15:25:50] Kayıt başlatıldı.
+[2025-08-14 15:25:50] Dikkat: Sadece klavye ve fare etkinlikleri kaydedilecektir. Dosya ve klasör erişimi izlenemez.
+[2025-08-14 15:25:50] Tıklama koordinatları ve etkin pencere başlıkları, dosya/klasör erişiminin yerine geçecek şekilde kaydedilmektedir.
+[2025-08-14 15:25:50] Etkin Pencere Değişti: Sistem Geneli Etkinlik Loglayıcısı
+[2025-08-14 15:25:51] Fare: Tıklama: Button.left tuşu (1053, 0) koordinatlarında basıldı.
+[2025-08-14 15:25:51] Etkin Pencere Değişti: Google Gemini - Google Chrome
+[2025-08-14 15:25:52] Fare: Tıklama: Button.left tuşu (1026, 4) koordinatlarında basıldı.
+[2025-08-14 15:25:52] Fare: Tıklama: Button.left tuşu (1026, 4) koordinatlarında basıldı.
+[2025-08-14 15:25:52] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:25:52] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:25:53] Fare: Tıklama: Button.left tuşu (1345, 69) koordinatlarında basıldı.
+[2025-08-14 15:25:54] Klavye: Tuş basıldı: 'a'
+[2025-08-14 15:25:54] Klavye: Tuş basıldı: 's'
+[2025-08-14 15:25:54] Klavye: Tuş basıldı: 'd'
+[2025-08-14 15:25:55] Fare: Tıklama: Button.left tuşu (1354, 698) koordinatlarında basıldı.
+[2025-08-14 15:25:55] Klavye: 'Ctrl_l + ' kombinasyonu basıldı.
+[2025-08-14 15:25:59] Fare: Tıklama: Button.left tuşu (175, 757) koordinatlarında basıldı.
+[2025-08-14 15:25:59] Fare: Tıklama: Button.left tuşu (117, 716) koordinatlarında basıldı.
+[2025-08-14 15:25:59] Etkin Pencere Değişti: Program Manager
+[2025-08-14 15:26:03] Fare: Tıklama: Button.left tuşu (47, 190) koordinatlarında basıldı.
+[2025-08-14 15:26:03] Fare: Tıklama: Button.left tuşu (47, 190) koordinatlarında basıldı.
+[2025-08-14 15:26:03] Etkin Pencere Değişti: Bu bilgisayar
+[2025-08-14 15:26:04] Fare: Tıklama: Button.left tuşu (400, 20) koordinatlarında basıldı.
+[2025-08-14 15:26:05] Fare: Tıklama: Button.left tuşu (1551, 306) koordinatlarında basıldı.
+[2025-08-14 15:26:06] Fare: Tıklama: Button.left tuşu (1840, 259) koordinatlarında basıldı.
+[2025-08-14 15:26:07] Etkin Pencere Değişti: Google Gemini - Google Chrome
+[2025-08-14 15:26:12] Fare: Tıklama: Button.left tuşu (668, 129) koordinatlarında basıldı.
+[2025-08-14 15:26:13] Etkin Pencere Değişti: Sistem Geneli Etkinlik Loglayıcısı
+[2025-08-14 15:26:13] Fare: Tıklama: Button.left tuşu (454, 317) koordinatlarında basıldı.
+[2025-08-14 15:26:14] Etkin Pencere Değişti: Program Manager
+[2025-08-14 15:26:15] Fare: Tıklama: Button.left tuşu (327, 361) koordinatlarında basıldı.
+[2025-08-14 15:26:16] Fare: Tıklama: Button.left tuşu (327, 361) koordinatlarında basıldı.
+[2025-08-14 15:26:17] Etkin Pencere Değişti: Stream
+[2025-08-14 15:26:17] Fare: Tıklama: Button.left tuşu (1362, 258) koordinatlarında basıldı.
+[2025-08-14 15:26:17] Fare: Tıklama: Button.left tuşu (1744, 330) koordinatlarında basıldı.
+[2025-08-14 15:26:19] Fare: Tıklama: Button.left tuşu (349, 679) koordinatlarında basıldı.
+[2025-08-14 15:26:19] Fare: Tıklama: Button.left tuşu (349, 678) koordinatlarında basıldı.
+[2025-08-14 15:26:20] Etkin Pencere Değişti: masterplea code - Not Defteri
+[2025-08-14 15:26:20] Fare: Tıklama: Button.left tuşu (1430, 78) koordinatlarında basıldı.
+[2025-08-14 15:26:21] Etkin Pencere Değişti: Stream
+[2025-08-14 15:26:22] Fare: Tıklama: Button.left tuşu (822, 289) koordinatlarında basıldı.
+[2025-08-14 15:26:23] Etkin Pencere Değişti: Sistem Geneli Etkinlik Loglayıcısı
+[2025-08-14 15:26:23] Fare: Tıklama: Button.left tuşu (1141, 194) koordinatlarında basıldı.
+[2025-08-14 15:26:23] Kayıt durduruldu.
