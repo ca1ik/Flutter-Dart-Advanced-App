@@ -1,0 +1,14 @@
+--- Log Kaydı: 2025-08-15 09:39:33 ---
+
+[2025-08-15 09:39:27] Kayıt başlatıldı.
+[2025-08-15 09:39:27] Etkin Pencere Değişti: funda last.py - Flutter-Dart-Advanced-App - Visual Studio Code [Administrator]
+[2025-08-15 09:39:28] Fare: Tıklama: Button.left tuşu (1799, 14) koordinatlarında basıldı.
+[2025-08-15 09:39:29] Etkin Pencere Değişti: GitHub Desktop
+[2025-08-15 09:39:30] Fare: Tıklama: Button.left tuşu (1705, 1059) koordinatlarında basıldı.
+[2025-08-15 09:39:30] Fare: Tıklama: Button.left tuşu (1706, 1062) koordinatlarında basıldı.
+[2025-08-15 09:39:30] Fare: Tıklama: Button.left tuşu (736, 727) koordinatlarında basıldı.
+[2025-08-15 09:39:31] Etkin Pencere Değişti: Program Manager
+[2025-08-15 09:39:32] Fare: Tıklama: Button.left tuşu (499, 698) koordinatlarında basıldı.
+[2025-08-15 09:39:32] Fare: Tıklama: Button.left tuşu (184, 827) koordinatlarında basıldı.
+[2025-08-15 09:39:32] Fare: Tıklama: Button.left tuşu (433, 589) koordinatlarında basıldı.
+[2025-08-15 09:39:33] Fare: Tıklama: Button.left tuşu (692, 541) koordinatlarında basıldı.

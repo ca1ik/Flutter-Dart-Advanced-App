@@ -1,0 +1,4 @@
+--- Log Kaydı: 2025-08-14 21:34:28 ---
+
+[2025-08-14 21:34:26] Kayıt başlatıldı.
+[2025-08-14 21:34:27] Etkin Pencere Değişti: funda last.py - Flutter-Dart-Advanced-App - Visual Studio Code [Administrator]
